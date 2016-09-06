@@ -1,8 +1,13 @@
 class Scrabble
   def score(word)
-    0
+    return 0 if word.nil?
+    letters = word.upcase.chars
+    values = letters.map do |letter|
+      point_values[letter]
+    end
+    return values.inject(0, :+)
   end
-
+  
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
